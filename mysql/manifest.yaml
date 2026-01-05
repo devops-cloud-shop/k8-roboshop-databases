@@ -66,7 +66,7 @@ spec:
         imagePullPolicy: Always
         volumeMounts:
         - name: mysql # this mount is to store data
-          mountPath: /var/lib/mysql
+          mountPath: /data/db
           subPath: mysql
         - name: mysql-config #this mount is to store config file
           mountPath: /etc/mysql/conf.d/my.cnf
