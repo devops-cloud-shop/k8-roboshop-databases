@@ -63,10 +63,11 @@ spec:
       containers:
       - name: mysql
         image: pravakula/mysql:v1
+        imagePullPolicy: Always
         volumeMounts:
-        - name: mysql
+        - name: mysql # this mount is to store data
           mountPath: /var/lib/mysql
-        - name: mysql-config
+        - name: mysql-config #this mount is to store config file
           mountPath: /etc/mysql/conf.d/my.cnf
           subPath: my.cnf
       volumes:
