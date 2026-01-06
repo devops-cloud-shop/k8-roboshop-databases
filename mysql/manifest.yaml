@@ -6,7 +6,8 @@ metadata:
 data:
   my.cnf: |
     [mysqld]
-    innodb_redo_log_capacity = 2G
+    datadir=/var/lib/mysql
+    innodb_redo_log_capacity=2G
 ---
 # service, headless service, statefulset, pvc
 apiVersion: v1
@@ -66,8 +67,7 @@ spec:
         imagePullPolicy: Always
         volumeMounts:
         - name: mysql # this mount is to store data
-          mountPath: /data/db #/var/lib/mysql - default data dir for mysql
-          subPath: mysql
+          mountPath: /var/lib/mysql #- default data dir for mysql
         - name: mysql-config #this mount is to store config file
           mountPath: /etc/mysql/conf.d/my.cnf
           subPath: my.cnf
